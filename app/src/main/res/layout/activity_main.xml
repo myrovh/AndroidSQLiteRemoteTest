@@ -20,6 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/status"
+            android:id="@+id/statusLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/example_1"
             android:id="@+id/textExample1" />
 
@@ -29,5 +36,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/example_2"
             android:id="@+id/textExample2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh"
+            android:id="@+id/refreshButton"
+            android:onClick="ClickRefresh" />
     </LinearLayout>
 </RelativeLayout>
