@@ -1,6 +1,8 @@
 package myrovh.androidsqliteremotetest;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -144,7 +146,13 @@ public class MainActivity extends AppCompatActivity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(File result) {
-            example1Text.setText("Done");
+            example1Text.setText(result.toString());
+            SQLiteDatabase database = SQLiteDatabase.openDatabase(result.toString(), null, SQLiteDatabase.OPEN_READWRITE);
+            Cursor namePointer = database.rawQuery("SELECT value FROM \"table\" WHERE 1", null);
+            //Cursor namePointer = database.query("table", new String[]{"value"}, null, null, null, null, null);
+            namePointer.moveToFirst();
+            example2Text.setText(namePointer.getString(namePointer.getColumnIndexOrThrow("value")));
+            namePointer.close();
         }
     }
 }
